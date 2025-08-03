@@ -50,7 +50,4 @@ Se usaron tres herramientas principales:
 
 ---
 
-## Contacto
 
-Proyecto realizado por [Tu Nombre]  
-Email: tu.email@example.com  
