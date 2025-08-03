@@ -1,6 +1,4 @@
-Claro, aquí tienes **todas las pruebas de Postman (10 en total)** en formato de colección JSON lista para importar directamente a Postman. Puedes copiar este bloque completo, pegarlo en un archivo llamado `postman_collection.json` y luego importarlo en Postman:
 
-```json
 {
   "info": {
     "name": "Pruebas API - Proyecto Final",
@@ -219,8 +217,3 @@ Claro, aquí tienes **todas las pruebas de Postman (10 en total)** en formato de
     }
   ]
 }
-```
-
-Este archivo contiene los **10 endpoints con sus respectivos scripts de prueba**, incluyendo tests en JavaScript para Postman.
-
-¿Quieres que ahora te pase el de **Cypress** o el de **Katalon**?
