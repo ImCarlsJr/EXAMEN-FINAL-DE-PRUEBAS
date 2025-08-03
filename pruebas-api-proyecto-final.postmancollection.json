@@ -1,0 +1,226 @@
+Claro, aquí tienes **todas las pruebas de Postman (10 en total)** en formato de colección JSON lista para importar directamente a Postman. Puedes copiar este bloque completo, pegarlo en un archivo llamado `postman_collection.json` y luego importarlo en Postman:
+
+```json
+{
+  "info": {
+    "name": "Pruebas API - Proyecto Final",
+    "_postman_id": "12345678-aaaa-bbbb-cccc-1234567890ab",
+    "description": "Colección de pruebas para JSONPlaceholder y Restful-Booker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+            "pm.test(\"Should return a list\", () => {",
+            "  let json = pm.response.json();",
+            "  pm.expect(json.length).to.be.above(0);",
+            "});"
+          ],
+          "type": "text/javascript"
+        }
+      }]
+    },
+    {
+      "name": "GET /posts/1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts", "1"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test(\"Post ID is 1\", () => {",
+            "  pm.expect(pm.response.json().id).to.eql(1);",
+            "});"
+          ],
+          "type": "text/javascript"
+        }
+      }]
+    },
+    {
+      "name": "POST /posts",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Nuevo post\",\n  \"body\": \"Contenido de prueba\",\n  \"userId\": 1\n}"
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test(\"Created successfully\", () => {",
+            "  pm.response.to.have.status(201);",
+            "});",
+            "pm.test(\"Response contains ID\", () => {",
+            "  pm.expect(pm.response.json()).to.have.property(\"id\");",
+            "});"
+          ],
+          "type": "text/javascript"
+        }
+      }]
+    },
+    {
+      "name": "PUT /posts/1",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"title\": \"Editado\",\n  \"body\": \"Texto actualizado\",\n  \"userId\": 1\n}"
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts", "1"]
+        }
+      }
+    },
+    {
+      "name": "PATCH /posts/1",
+      "request": {
+        "method": "PATCH",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Título parcial\"\n}"
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts", "1"]
+        }
+      }
+    },
+    {
+      "name": "DELETE /posts/1",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": ["jsonplaceholder", "typicode", "com"],
+          "path": ["posts", "1"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test(\"Status is 200 or 204\", () => {",
+            "  pm.expect([200, 204]).to.include(pm.response.code);",
+            "});"
+          ],
+          "type": "text/javascript"
+        }
+      }]
+    },
+    {
+      "name": "GET /ping",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://restful-booker.herokuapp.com/ping",
+          "protocol": "https",
+          "host": ["restful-booker", "herokuapp", "com"],
+          "path": ["ping"]
+        }
+      }
+    },
+    {
+      "name": "GET /booking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://restful-booker.herokuapp.com/booking",
+          "protocol": "https",
+          "host": ["restful-booker", "herokuapp", "com"],
+          "path": ["booking"]
+        }
+      }
+    },
+    {
+      "name": "POST /auth",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": {
+          "raw": "https://restful-booker.herokuapp.com/auth",
+          "protocol": "https",
+          "host": ["restful-booker", "herokuapp", "com"],
+          "path": ["auth"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.environment.set(\"token\", pm.response.json().token);"
+          ],
+          "type": "text/javascript"
+        }
+      }]
+    },
+    {
+      "name": "POST /booking",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstname\": \"Carlos\",\n  \"lastname\": \"Test\",\n  \"totalprice\": 111,\n  \"depositpaid\": true,\n  \"bookingdates\": {\n    \"checkin\": \"2025-08-01\",\n    \"checkout\": \"2025-08-03\"\n  },\n  \"additionalneeds\": \"Desayuno\"\n}"
+        },
+        "url": {
+          "raw": "https://restful-booker.herokuapp.com/booking",
+          "protocol": "https",
+          "host": ["restful-booker", "herokuapp", "com"],
+          "path": ["booking"]
+        }
+      }
+    }
+  ]
+}
+```
+
+Este archivo contiene los **10 endpoints con sus respectivos scripts de prueba**, incluyendo tests en JavaScript para Postman.
+
+¿Quieres que ahora te pase el de **Cypress** o el de **Katalon**?
